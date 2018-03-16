@@ -1,0 +1,41 @@
+{
+    "name": "jeroen-g/textconveyor",
+    "keywords": ["Text", "Formatting"],
+    "description": "Send any text over a conveyor to format it.",
+    "homepage": "https://github.com/Jeroen-G/textconveyor",
+    "license": "EUPL-1.1",
+    "authors": [
+        {
+            "name": "Jeroen",
+            "email": "jeroengjeroeng@gmail.com",
+            "homepage": "https://github.com/Jeroen-G"
+        }
+    ],
+    "require": {
+        "illuminate/pipeline": "~5"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "~6.0",
+        "jeroen-g/testassist": "^1.2"
+    },
+    "suggest": {
+        "illuminate/support": "This package provides a Laravel service provider."
+    },
+    "autoload": {
+        "psr-4": {
+            "JeroenG\\TextConveyor\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "JeroenG\\TextConveyor\\Tests\\": "tests"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "JeroenG\\TextConveyor\\TextConveyorServiceProvider"
+            ]
+        }
+    }
+}
