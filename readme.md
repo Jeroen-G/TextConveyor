@@ -52,7 +52,7 @@ license. Please see the [license file](license.md) for more information.
 
 [link-packagist]: https://packagist.org/packages/jeroen-g/textconveyor
 [link-downloads]: https://packagist.org/packages/jeroen-g/textconveyor
-[link-travis]: https://travis-ci.org/jeroen-g/textconveyor
+[link-travis]: https://travis-ci.org/Jeroen-G/TextConveyor
 [link-styleci]: https://styleci.io/repos/125524541
 [link-author]: https://github.com/jeroen-g
 [link-contributors]: ../../contributors]
