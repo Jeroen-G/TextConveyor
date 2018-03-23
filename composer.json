@@ -15,8 +15,7 @@
         "illuminate/pipeline": "~5"
     },
     "require-dev": {
-        "phpunit/phpunit": "~6.0",
-        "jeroen-g/testassist": "^1.2"
+        "phpunit/phpunit": "~7.0"
     },
     "suggest": {
         "illuminate/support": "This package provides a Laravel service provider."

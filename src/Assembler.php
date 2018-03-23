@@ -6,19 +6,22 @@ use Illuminate\Pipeline\Pipeline;
 
 class Assembler
 {
-    protected static $formatters = [];
+    /**
+     * @var array
+     */
+    protected $formatters = [];
 
     /**
      * This function runs the content through all registered formatters.
      *
      * @param string $content
-     * @return mixed
+     * @return string
      */
-    public function sendContentThroughFormatters($content) : mixed
+    public function sendContentThroughFormatters(string $content) : string
     {
-        return app(Pipeline::class)
+        return (new Pipeline)
             ->send($content)
-            ->through(self::$formatters)
+            ->through($this->formatters)
             ->then(function ($content) {
                 return $content;
             });
@@ -28,18 +31,43 @@ class Assembler
      * Register formatters to the pipeline.
      *
      * @param array $formatters
-     * @return self
+     * @return $this
      */
     public function setFormatters(array $formatters) : self
     {
-        self::$formatters = array_unique(array_merge(self::$formatters, $formatters));
-        return new self;
+        $this->formatters = $formatters;
+
+        return $this;
     }
 
-    public function addFormatter(string $className) : self
+    /**
+     * Add a single formatter.
+     *
+     * @param string $className
+     * @return $this
+     */
+    public function addFormatter( $className) : self
     {
-        self::$formatters = array_unique(array_merge(self::$formatters, $formatters));
-        return new self;
+        if (!in_array($className, $this->formatters)) {
+            $this->formatters[] = $className;
+        }
+
+        return $this;
+    }
+
+    /**
+     * Remove a single formatter.
+     *
+     * @param string $className
+     * @return $this
+     */
+    public function removeFormatter(string $className) : self
+    {
+        if (($key = array_search($className, $this->formatters)) !== false) {
+            unset($this->formatters[$key]);
+        }
+
+        return $this;
     }
 
     /**
@@ -49,6 +77,6 @@ class Assembler
      */
     public function getFormatters() : array
     {
-        return self::$formatters;
+        return $this->formatters;
     }
 }
