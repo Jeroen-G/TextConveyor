@@ -47,7 +47,9 @@ class AssemblerTest extends TestCase
     public function test_bad_words_are_replaced()
     {
         $assembler = new Assembler;
-        $assembler->addFormatter(function($content) { return 'Oh ¯\_(ツ)_/¯'; });
+        $assembler->addFormatter(function ($content) {
+            return 'Oh ¯\_(ツ)_/¯';
+        });
 
         $line = $assembler->sendContentThroughFormatters('Oh shit');
         $this->assertEquals('Oh ¯\_(ツ)_/¯', $line);

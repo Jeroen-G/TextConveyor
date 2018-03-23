@@ -13,6 +13,7 @@ class RemoveBadWords
     public function handle($content, Closure $next)
     {
         $content = str_replace(self::$badWords, '¯\_(ツ)_/¯', $content);
+
         return $next($content);
     }
 }
