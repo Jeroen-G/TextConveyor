@@ -46,9 +46,9 @@ class Assembler
      * @param string $className
      * @return $this
      */
-    public function addFormatter( $className) : self
+    public function addFormatter($className) : self
     {
-        if (!in_array($className, $this->formatters)) {
+        if (! in_array($className, $this->formatters)) {
             $this->formatters[] = $className;
         }
 
