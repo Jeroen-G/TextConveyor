@@ -34,7 +34,10 @@
         "laravel": {
             "providers": [
                 "JeroenG\\TextConveyor\\TextConveyorServiceProvider"
-            ]
+            ],
+            "aliases": {
+                "TextConveyor": "JeroenG\\TextConveyor\\Facades\\TextConveyor"
+            }
         }
     }
 }
