@@ -2,6 +2,7 @@
 
 namespace JeroenG\TextConveyor;
 
+use Illuminate\Container\Container;
 use Illuminate\Pipeline\Pipeline;
 
 class Assembler
@@ -19,7 +20,7 @@ class Assembler
      */
     public function sendContentThroughFormatters(string $content) : string
     {
-        return (new Pipeline)
+        return (new Pipeline($this->getContainer()))
             ->send($content)
             ->through($this->formatters)
             ->then(function ($content) {
@@ -48,7 +49,7 @@ class Assembler
      */
     public function addFormatter($className) : self
     {
-        if (! in_array($className, $this->formatters)) {
+        if (!in_array($className, $this->formatters)) {
             $this->formatters[] = $className;
         }
 
@@ -78,5 +79,10 @@ class Assembler
     public function getFormatters() : array
     {
         return $this->formatters;
+    }
+
+    protected function getContainer()
+    {
+        return new Container();
     }
 }
