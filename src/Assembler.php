@@ -2,8 +2,8 @@
 
 namespace JeroenG\TextConveyor;
 
-use Illuminate\Container\Container;
 use Illuminate\Pipeline\Pipeline;
+use Illuminate\Container\Container;
 
 class Assembler
 {
@@ -44,13 +44,13 @@ class Assembler
     /**
      * Add a single formatter.
      *
-     * @param string $className
+     * @param string $formatter
      * @return $this
      */
-    public function addFormatter($className) : self
+    public function addFormatter(string $formatter) : self
     {
-        if (!in_array($className, $this->formatters)) {
-            $this->formatters[] = $className;
+        if (!in_array($formatter, $this->formatters)) {
+            $this->formatters[] = $formatter;
         }
 
         return $this;
@@ -59,12 +59,12 @@ class Assembler
     /**
      * Remove a single formatter.
      *
-     * @param string $className
+     * @param string $formatter
      * @return $this
      */
-    public function removeFormatter(string $className) : self
+    public function removeFormatter(string $formatter) : self
     {
-        if (($key = array_search($className, $this->formatters)) !== false) {
+        if (($key = array_search($formatter, $this->formatters)) !== false) {
             unset($this->formatters[$key]);
         }
 
@@ -81,7 +81,12 @@ class Assembler
         return $this->formatters;
     }
 
-    protected function getContainer()
+    /**
+     * Return a container instance for the pipeline to resolve formatter classes.
+     *
+     * @return \Illuminate\Container\Container
+     */
+    protected function getContainer() : Container
     {
         return new Container();
     }

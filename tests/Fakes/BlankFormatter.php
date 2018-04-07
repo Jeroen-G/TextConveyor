@@ -3,10 +3,11 @@
 namespace JeroenG\TextConveyor\Tests\Fakes;
 
 use Closure;
+use JeroenG\TextConveyor\FormatterInterface;
 
-class BlankFormatter
+class BlankFormatter implements FormatterInterface
 {
-    public function handle($content, Closure $next)
+    public function handle(string $content, Closure $next)
     {
         return $next($content);
     }

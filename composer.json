@@ -16,10 +16,12 @@
         "illuminate/container": "^5.6"
     },
     "require-dev": {
-        "phpunit/phpunit": "~7.0"
+        "phpunit/phpunit": "~7.0",
+        "league/commonmark": "~0.17"
     },
     "suggest": {
-        "illuminate/support": "This package provides a Laravel service provider."
+        "illuminate/support": "This package provides a Laravel service provider.",
+        "league/commonmark": "This allows the use of the markdown formatter"
     },
     "autoload": {
         "psr-4": {
