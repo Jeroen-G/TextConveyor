@@ -49,7 +49,7 @@ class Assembler
      */
     public function addFormatter(string $formatter) : self
     {
-        if (!in_array($formatter, $this->formatters)) {
+        if (! in_array($formatter, $this->formatters)) {
             $this->formatters[] = $formatter;
         }
 
