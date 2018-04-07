@@ -14,7 +14,7 @@ Via Composer
 $ composer require jeroen-g/textconveyor
 ```
 
-In case you're using Laravel, a service provider and facade get registered automatically.
+In case you're using Laravel, a service provider and facade get registered automatically. With `artisan vendor:publish` you can alter the formatters that get set in the config file.
 
 ## Usage
 
@@ -28,9 +28,9 @@ $formattedText = $assembler->sendContentThroughFormatters($content);
 
 This is how it could be used in an Eloquent model:
 ```php
-public function setBodyAttribute($body)
+public function getBodyAttribute($body)
 {
-    $this->attributes['body'] = app(JeroenG\TextConveyor\Assembler::class)->sendContentThroughFormatters($body);
+    return app(JeroenG\TextConveyor\Assembler::class)->sendContentThroughFormatters($body);
 }
 ```
 

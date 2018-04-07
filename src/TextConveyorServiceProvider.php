@@ -7,13 +7,24 @@ use Illuminate\Support\ServiceProvider;
 class TextConveyorServiceProvider extends ServiceProvider
 {
     /**
+     * Indicates if loading of the provider is deferred.
+     *
+     * @var bool
+     */
+    protected $defer = true;
+
+    /**
      * Perform post-registration booting of services.
      *
      * @return void
      */
     public function boot()
     {
-        //
+        if ($this->app->runningInConsole()) {
+            $this->publishes([
+                __DIR__.'/../config/formatters.php' => config_path('formatters.php'),
+            ]);
+        }
     }
 
     /**
@@ -23,9 +34,13 @@ class TextConveyorServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->singleton('textconveyor', function ($app) {
-            return new Assembler;
+        $this->app->singleton(Assembler::class, function ($app) {
+            return (new Assembler)->setFormatter($app['config']['formatters']['formatters']);
         });
+
+        $this->mergeConfigFrom(
+            __DIR__.'/../config/formatters.php', 'formatters'
+        );
     }
 
     /**
@@ -35,6 +50,6 @@ class TextConveyorServiceProvider extends ServiceProvider
      */
     public function provides()
     {
-        return ['textconveyor'];
+        return [Assembler::class];
     }
 }
