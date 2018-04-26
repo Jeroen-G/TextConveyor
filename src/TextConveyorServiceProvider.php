@@ -35,7 +35,7 @@ class TextConveyorServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->singleton(Assembler::class, function ($app) {
-            return (new Assembler)->setFormatter($app['config']['formatters']['formatters']);
+            return (new Assembler)->setFormatters($app['config']['formatters']['formatters']);
         });
 
         $this->mergeConfigFrom(

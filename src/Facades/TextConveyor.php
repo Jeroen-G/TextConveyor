@@ -2,6 +2,7 @@
 
 namespace JeroenG\TextConveyor\Facades;
 
+use JeroenG\TextConveyor\Assembler;
 use Illuminate\Support\Facades\Facade;
 
 class TextConveyor extends Facade
@@ -13,6 +14,6 @@ class TextConveyor extends Facade
      */
     protected static function getFacadeAccessor()
     {
-        return 'textconveyor';
+        return Assembler::class;
     }
 }
