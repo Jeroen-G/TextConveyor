@@ -47,7 +47,7 @@ Please see [contributing.md](contributing.md) for details and a todolist.
 license. Please see the [license file](license.md) for more information.
 
 [ico-version]: https://img.shields.io/packagist/v/jeroen-g/textconveyor.svg?style=flat-square
-[ico-travis]: https://img.shields.io/travis/jeroen-g/textconveyor/master.svg?style=flat-square
+[ico-travis]: https://img.shields.io/travis/Jeroen-G/TextConveyor/master.svg?style=flat-square
 [ico-styleci]: https://styleci.io/repos/125524541/shield
 
 [link-packagist]: https://packagist.org/packages/jeroen-g/textconveyor
